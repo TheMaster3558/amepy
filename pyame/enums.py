@@ -1,3 +1,4 @@
+"""
 MIT License
 
 Copyright (c) 2022-present TheMaster3558
@@ -19,3 +20,36 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+"""
+
+from __future__ import annotations
+
+import enum
+
+
+class HypesquadHouse(enum.Enum):
+    hypesquad_bravery = 'bravery'
+    hypesquad_brilliance = 'brilliance'
+    hypesquad_balance = 'balance'
+
+
+class Orientation(enum.Enum):
+    left_right = 'leftiright'
+    right_left = 'right-left'
+    top_bottom = 'top-bottom'
+    bottom_top = 'bottom-top'
+    top_left = 'top-left'
+    top_right = 'top-right'
+    bottom_left = 'bottom-left'
+    bottom_right = 'bottom-right'
+
+
+class TrinityType(enum.Enum):
+    basic = 1
+    remastered = 2
+
+
+class VersusColors(enum.Enum):
+    orange_and_blue = 1
+    red_and_blue = 2
+    red_gradient_and_blue = 3

@@ -1,3 +1,4 @@
+"""
 MIT License
 
 Copyright (c) 2022-present TheMaster3558
@@ -19,3 +20,43 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+"""
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Any, Dict, Mapping, Union, TypeVar
+
+from .errors import error_mapping
+
+if TYPE_CHECKING:
+    import aiohttp
+    from typing_extensions import ParamSpec
+
+    P = ParamSpec('P')
+
+
+T = TypeVar('T')
+
+
+class Sentinel:
+    def __repr__(self) -> str:
+        return '...'
+
+
+MISSING: Any = Sentinel()
+
+
+def is_json(headers: Mapping[str, str]) -> bool:
+    return headers['Content-Type'].startswith('application/json')
+
+
+def raise_http_errors(data: Union[Dict[str, Any], bytes], status: int) -> None:
+    exc_cls = error_mapping.get(status)
+    if exc_cls is not None:
+        raise exc_cls(data)
+
+
+async def json_or_data(response: aiohttp.ClientResponse) -> Union[Dict[str, Any], bytes]:
+    if is_json(response.headers):
+        return await response.json()
+    return await response.read()
