@@ -149,7 +149,7 @@ class Client:
     def headers(self) -> Dict[str, str]:
         return {'Authorization': f'Bearer {self.api_key}'}
 
-    async def _request(self, method: str, endpoint: str, /, **json: Any) -> Union[Dict[str, Any], bytes]:
+    async def _request(self, method: str, endpoint: str, **json: Any) -> Union[Dict[str, Any], bytes]:
         assert self.session is not None
         async with self.session.request(method, self._BASE + endpoint, json={k: v for k, v in json.items() if v is not MISSING}, headers=self.headers) as response:
             data = await json_or_data(response)
