@@ -10,12 +10,12 @@ import sys
 
 sys.path.append(os.path.abspath('..'))
 
-import pyame
+import amepy
 
 
-project = pyame.__name__
-copyright = pyame.__copyright__
-author = pyame.__author__
+project = amepy.__name__
+copyright = amepy.__copyright__
+author = amepy.__author__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

@@ -1,22 +1,21 @@
 from setuptools import setup, find_packages
 import re
 
-with open('requirements.txt') as f:
-    requirements = f.read().splitlines()
+requirements = ['aiohttp<4.0']
 
-with open('pyame/__init__.py') as f:
+with open('amepy/__init__.py') as f:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
 
 with open('README.rst') as f:
     readme = f.read()
 
 setup(
-    name='pyame',
+    name='amepy',
     author='The Master',
-    url='https://github.com/TheMaster3558/pyame',
+    url='https://github.com/TheMaster3558/amepy',
     project_urls={
-        'Documentation': 'https://pyame.readthedocs.io/en/latest/',
-        'Github': 'https://github.com/TheMaster3558/pyame',
+        'Documentation': 'https://amepy.readthedocs.io/en/latest/',
+        'Github': 'https://github.com/TheMaster3558/amepy',
     },
     version=version,
     packages=find_packages(),

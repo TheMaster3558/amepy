@@ -51,10 +51,10 @@ class Client:
     .. code:: py
 
         import asyncio
-        import pyame
+        import amepy
 
         async def main():
-            async with pyame.Client('api_key') as client:
+            async with amepy.Client('api_key') as client:
                 data = await client.triggered('image_url')
                 with open('triggered.gif', 'wb') as f:
                     f.write(data)
@@ -67,14 +67,14 @@ class Client:
 
         import asyncio
         import io
-        import pyame
+        import amepy
 
         import discord
         from discord.ext import commands
 
         class MyBot(commands.Bot):
             async def setup_hook():
-                self.client = pyame.Client('api_key')
+                self.client = amepy.Client('api_key')
                 await self.client.create_session()
 
             async def close():
