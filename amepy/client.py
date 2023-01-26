@@ -24,7 +24,7 @@ SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, ClassVar, Dict, List, TypeVar, Optional, Union
+from typing import TYPE_CHECKING, Any, ClassVar, Dict, List, Optional, Union
 
 import aiohttp
 
@@ -32,12 +32,7 @@ from .enums import HypesquadHouse, Orientation, TrinityType, VersusColors
 from .utils import json_or_data, raise_http_errors, MISSING
 
 if TYPE_CHECKING:
-    from typing_extensions import ParamSpec, Self
-
-    P = ParamSpec('P')
-
-
-T = TypeVar('T')
+    from typing_extensions import Self
 
 
 class Client:
